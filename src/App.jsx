@@ -10,13 +10,35 @@ const arrayFilm = [
 ]
 
 function App() {
-  const [genre, setGenre] = useState(arrayFilm)
+  const [genre, setGenre] = useState("");
+  const [filteredGenre, setFilteredGenre] = useState(arrayFilm)
+
+
+
   return (
     <>
+
+      <div>
+        <ul>
+          {
+            arrayFilm.map((element, index) => {
+              return (
+                <li key={index}>{element.title}</li>
+              )
+            })
+          }
+        </ul>
+      </div>
       <form>
-        <label for="genere">Scegli il genere:</label>
-        <select name="genere">
-          <option value="genre"></option>
+        <label>Scegli il genere:</label>
+        <select>
+          {
+            filteredGenre.map((element, index) => {
+              return (
+                <option value={index}>{element.genre}</option>
+              )
+            })
+          }
         </select>
       </form>
     </>
